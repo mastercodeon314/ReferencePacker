@@ -50,6 +50,12 @@ namespace ReferencePacker
             Console.ReadLine();
         }
 
+        static void PrintNoFileError()
+        {
+            Console.WriteLine("Error: no file given as argument");
+            Console.ReadLine();
+        }
+
         static void Main(string[] args)
         {
             PrintBanner();
@@ -60,6 +66,14 @@ namespace ReferencePacker
                 {
                     runPacker(args[0]);
                 }
+                else
+                {
+                    PrintNoFileError();
+                }
+            }
+            else
+            {
+                PrintNoFileError();
             }
         }
     }
