@@ -6,13 +6,24 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.Diagnostics;
 using System.IO;
-using System.Windows.Forms;
+using System.Threading;
+//using SevenZip;
+
 
 public static class ModuleInit
 {
     public static void Run()
     {
         AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+
+        //MemoryStream uncompressedStream = new MemoryStream(new byte[0]);
+        //MemoryStream compressedStream = new MemoryStream(new byte[0]);
+
+        //using (SevenZipExtractor extractor = new SevenZipExtractor(compressedStream))
+        //{
+        //    extractor.ExtractFile(0, uncompressedStream);
+        //}
+
     }
 
     private static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
@@ -59,10 +70,9 @@ public static class ModuleInit
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.ToString());
+            throw ex;
         }
 
-        Debugger.Break();
         return args.RequestingAssembly;
     }
 }

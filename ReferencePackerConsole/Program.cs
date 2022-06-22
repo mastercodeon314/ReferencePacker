@@ -11,8 +11,8 @@ using System.IO;
 using System.Threading;
 using dnlib.DotNet.Writer;
 using System.Windows.Forms;
-
-namespace ReferencePacker
+using ReferencePacker;
+namespace ReferencePackerConsole
 {
     class Program
     {
@@ -34,9 +34,10 @@ namespace ReferencePacker
             Console.ForegroundColor = oldColor;
         }
 
-        static void runPacker(string path)
+        static void runPacker(string path, bool  useCompression)
         {
-            ReferencePacker packer = new ReferencePacker(path);
+            Packer packer = new Packer(path);
+            packer.EnableCompression = useCompression;
             try
             {
                 packer.Pack();
@@ -62,9 +63,18 @@ namespace ReferencePacker
 
             if (args != null)
             {
-                if (args.Length >= 1)
+                if (args.Length == 1)
                 {
-                    runPacker(args[0]);
+                    runPacker(args[0], false);
+                }
+                else if (args.Length == 2)
+                {
+                    string useCompression = args[1];
+
+                    if (useCompression == "--compress" ||  useCompression == "-compress" || useCompression == "-c" || useCompression == "--c")
+                    {
+                        runPacker(args[0], true);
+                    }
                 }
                 else
                 {

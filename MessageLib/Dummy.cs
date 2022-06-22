@@ -13,5 +13,10 @@ namespace MessageLib
         {
             MessageBox.Show("Hello from MessageLib.dll!", "MessageLib");
         }
+
+        public static void Foo()
+        {
+            return;
+        }
     }
 }

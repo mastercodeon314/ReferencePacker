@@ -87,6 +87,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>$(SolutionDir)\bin\Debug\ReferencePacker.exe "$(TargetPath)"</PostBuildEvent>
+    <PostBuildEvent>$(SolutionDir)\bin\Debug\ReferencePackerConsole.exe "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -93,6 +93,12 @@ namespace ReferencePacker
 			var newTypeDef = ctx.Map(typeDef)?.ResolveTypeDefThrow();
 			newTypeDef.BaseType = ctx.Importer.Import(typeDef.BaseType);
 
+			foreach (CustomAttribute attr in typeDef.CustomAttributes)
+            {
+				//newTypeDef.CustomAttributes.Add(new CustomAttribute((ICustomAttributeType)attr.AttributeType, attr.ConstructorArguments, attr.NamedArguments));
+				newTypeDef.CustomAttributes.Add(attr);
+            }
+
 			foreach (InterfaceImpl iface in typeDef.Interfaces)
 				newTypeDef.Interfaces.Add(new InterfaceImplUser(ctx.Importer.Import(iface.Interface)));
 		}
