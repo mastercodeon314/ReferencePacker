@@ -1,16 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using dnlib;
-using dnlib.DotNet;
-using dnlib.DotNet.Emit;
-using System.Diagnostics;
-using System.IO;
-using System.Threading;
-using dnlib.DotNet.Writer;
-using System.Windows.Forms;
 using ReferencePacker;
 namespace ReferencePackerConsole
 {
